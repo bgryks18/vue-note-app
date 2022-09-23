@@ -2,7 +2,8 @@
   <main>
     <div class="container">
       <div class="content">
-        <h3>Notelist</h3>
+        <list />
+        <pagination />
       </div>
     </div>
   </main>
@@ -10,7 +11,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Pagination from '../components/Pagination.vue'
+import List from '../components/List.vue'
 export default defineComponent({
-  name: 'NoteList',
+  name: 'NotesList',
+  components: {
+    Pagination,
+    List,
+  },
 })
 </script>
