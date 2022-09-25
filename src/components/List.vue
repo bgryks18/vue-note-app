@@ -1,23 +1,22 @@
 <template>
   <div class="list">
     <div class="header">
-      <h3>My Notes</h3>
+      <h3>{{ title }}</h3>
     </div>
-    <div class="listItem">
+    <div class="listItem" v-for="item in notes" :key="item.createdAt">
       <div class="listTitle">
         <span>
-          <router-link to="/">Title</router-link>
+          <router-link to="/">{{ item.title }}</router-link>
         </span>
       </div>
       <div class="listContent">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore temporibus eos quae iste doloremque molestias et
-          suscipit quasi fugiat dolorum est repudiandae esse, facilis deleniti reiciendis ipsam sit reprehenderit velit.
+          {{ item.content }}
           <router-link to="/">see more</router-link>
         </p>
       </div>
       <div class="listInfo">
-        <small>{{ Date.now() }}</small>
+        <small>{{ showDate(item.createdAt) }}</small>
       </div>
     </div>
   </div>
@@ -25,7 +24,26 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
+import type { Note } from '../types/note.type'
+import moment from '../utils/moment'
+
 export default defineComponent({
   name: 'List',
+  props: {
+    notes: {
+      type: Array as PropType<Note[]>,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    showDate(createdAt: Date) {
+      return moment(new Date(createdAt)).format('dddd, MMMM Do YYYY, H:mm:ss ')
+    },
+  },
 })
 </script>

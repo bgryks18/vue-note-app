@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="content">
-        <list />
+        <list :notes="notes" title="My Notes" />
         <pagination />
       </div>
     </div>
@@ -13,11 +13,15 @@
 import { defineComponent } from 'vue'
 import Pagination from '../components/Pagination.vue'
 import List from '../components/List.vue'
+import { mapGetters } from 'vuex'
 export default defineComponent({
   name: 'NotesList',
   components: {
     Pagination,
     List,
+  },
+  computed: {
+    ...mapGetters(['notes']),
   },
 })
 </script>

@@ -41,6 +41,7 @@ body {
 $blue: #397bf5;
 $darkBlue: #1e5ed4;
 $lightBlue: #699af5;
+$red: #e71515;
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -74,6 +75,12 @@ $lightBlue: #699af5;
 }
 .mb-auto {
   margin-bottom: auto;
+}
+.notify {
+  background: $blue !important;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
 }
 header {
   --headerHeight: 60px;
@@ -194,6 +201,11 @@ select {
   &:active {
     background: $darkBlue;
   }
+  &:disabled {
+    background: #999;
+    cursor: initial;
+    border: 0;
+  }
   border: 1px solid #333;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -276,6 +288,11 @@ textarea.form-control {
     }
     textarea {
       resize: none;
+    }
+    .errorMessage {
+      color: $red;
+      @include responsiveText(12px);
+      height: 15px;
     }
   }
 }

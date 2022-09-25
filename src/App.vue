@@ -5,6 +5,7 @@
     </div>
   </header>
   <router-view />
+  <notifications position="bottom center" classes="notify" />
 </template>
 
 <script lang="ts">
