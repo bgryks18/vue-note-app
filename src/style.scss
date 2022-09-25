@@ -361,6 +361,13 @@ main {
           color: #333;
           @include responsiveText(1.3rem);
           border-bottom: 1px solid #ddd;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          small {
+            color: #999;
+            @include responsiveText(16px);
+          }
         }
       }
 
@@ -404,6 +411,15 @@ main {
               cursor: pointer;
               &:hover {
                 color: $darkBlue;
+              }
+            }
+            &.passive {
+              svg {
+                color: $lightBlue;
+                padding: 0.2rem;
+                height: calc(var(--paginationHeight) / 1.2);
+                width: calc(var(--paginationHeight) / 1.2);
+                cursor: initial;
               }
             }
           }

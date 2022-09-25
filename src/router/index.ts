@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CreateNoteView from '../views/CreateNoteView.vue'
 import NoteListView from '../views/NoteListView.vue'
+import NoteView from '../views/NoteView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,12 +13,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/notes',
     name: 'notes',
-    component: NoteListView,
+    redirect: '/notes/1',
   },
   {
     path: '/notes/create',
     name: 'create',
     component: CreateNoteView,
+  },
+  {
+    path: '/notes/:id',
+    name: 'notesPagination',
+    component: NoteListView,
+  },
+  {
+    path: '/note/:id',
+    name: 'note',
+    component: NoteView,
   },
   // {
   //   path: '/about',

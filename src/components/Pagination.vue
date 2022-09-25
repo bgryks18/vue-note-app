@@ -1,22 +1,19 @@
 <template>
   <div class="pagination">
-    <div class="paginationItem arrow">
+    <div class="paginationItem arrow" :class="Number($route.params.id) === 1 && 'passive'">
       <v-icon name="bi-arrow-left-circle-fill" @click="goBack" />
     </div>
-    <router-link to="/" class="paginationItem active">
-      <span>1</span>
+    <router-link
+      :to="'/' + page + '/' + item"
+      class="paginationItem"
+      :class="$route.params.id == item && 'active'"
+      v-for="item in numbers"
+      :key="item"
+    >
+      <span>{{ item }}</span>
     </router-link>
-    <router-link to="/" class="paginationItem">
-      <span>2</span>
-    </router-link>
-    <router-link to="/" class="paginationItem">
-      <span>3</span>
-    </router-link>
-    <router-link to="/" class="paginationItem">
-      <span>4</span>
-    </router-link>
-    <div class="paginationItem arrow">
-      <v-icon name="bi-arrow-right-circle-fill" @click="goBack" />
+    <div class="paginationItem arrow" :class="Number($route.params.id) === numbers.length && 'passive'">
+      <v-icon name="bi-arrow-right-circle-fill" @click="goNext" />
     </div>
   </div>
 </template>
@@ -24,10 +21,45 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Pagination',
-  props: {},
+  data() {
+    return {
+      perPage: 5,
+    }
+  },
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
+    page: {
+      type: String,
+      required: true,
+    },
+  },
+  computed: {
+    numbers() {
+      const pageNumbers = []
+      const max = Math.ceil(this.items.length / this.perPage)
+      for (let i = 1; i <= max; i++) {
+        pageNumbers.push(i)
+      }
+      return pageNumbers
+    },
+  },
   methods: {
     goBack() {
-      this.$router.back()
+      const id = this.$route.params.id
+      if (Number(id) === 1) {
+        return
+      }
+      this.$router.push('/' + this.page + '/' + (Number(id) - 1))
+    },
+    goNext() {
+      const id = this.$route.params.id
+      if (Number(id) === this.numbers.length) {
+        return
+      }
+      this.$router.push('/' + this.page + '/' + (Number(id) + 1))
     },
   },
 })

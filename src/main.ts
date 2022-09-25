@@ -10,7 +10,8 @@ import {
   IoHome,
   BiArrowLeftCircleFill,
   BiArrowRightCircleFill,
+  GiNotebook,
 } from 'oh-vue-icons/icons'
 import Notifications from '@kyvg/vue3-notification'
-addIcons(BiLayoutTextSidebarReverse, HiSolidPlus, IoHome, BiArrowLeftCircleFill, BiArrowRightCircleFill)
+addIcons(BiLayoutTextSidebarReverse, HiSolidPlus, IoHome, BiArrowLeftCircleFill, BiArrowRightCircleFill, GiNotebook)
 createApp(App).use(router).use(store).use(Notifications).component('v-icon', OhVueIcon).mount('#app')

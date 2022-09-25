@@ -5,9 +5,11 @@
   <nav class="topMenu">
     <ul>
       <li>
-        <router-link to="/notes/create"> <v-icon name="hi-solid-plus" />Create Note</router-link>
+        <router-link to="/notes/create"> <v-icon name="hi-solid-plus" /> Create Note</router-link>
       </li>
-      <li><router-link to="/notes">My Notes</router-link></li>
+      <li>
+        <router-link to="/notes"><v-icon name="gi-notebook" /> My Notes</router-link>
+      </li>
     </ul>
   </nav>
 </template>
